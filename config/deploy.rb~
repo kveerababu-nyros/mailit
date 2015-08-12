@@ -1,0 +1,32 @@
+# Define the name of the application
+set :application, "mailit"
+set :repository, "https://github.com/kveerababu-nyros/mailit.git"
+
+set :scm, :git
+
+
+set :user, 'deploy'
+set :use_sudo, false
+set :deploy_to, "/var/www/#{application}"
+set :deplot_via, :remote_cache
+
+
+role :web, "mailit"
+role :app, "mailit"
+role :db, "mailit", :primary => true
+
+
+
+namespace :deploy do
+  task :bundle_gems do
+  run "cd #{deploy_to}/current && bundle install vendor/gems"
+  end
+ 
+  task :start do ;end
+  task :stop do ;end
+  task :restart, :roles => :app, :except => {:no_release => true} do
+    run "touch #{File.join(current_path,'tmp','restart.txt')}"
+    end
+  end
+
+ 

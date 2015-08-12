@@ -5,6 +5,21 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.3'
 gem 'mail'
 gem 'whenever', :require => false
+group :production do
+
+  gem 'pg'
+
+   gem 'capistrano', '~> 3.3.0'
+
+   gem 'capistrano-bundler', '~> 1.1.2'
+
+   gem 'capistrano-rails', '~> 1.1'
+
+   gem 'capistrano-rvm'
+
+   gem 'sshkit'
+
+end
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

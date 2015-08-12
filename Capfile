@@ -1,12 +1,23 @@
-# Load DSL and set up stages
 require 'capistrano/setup'
 
-# Include default deployment tasks
 require 'capistrano/deploy'
-load 'deploy'
-# Uncomment if you are using Rails' asset pipeline
-    # load 'deploy/assets'
-load 'config/deploy' # remove this line to skip loading any of the default tasks
+
+require 'capistrano/bundler'
+
+require 'capistrano/rails'
+
+
+
+require 'capistrano/rvm'
+
+  set :rvm_type, :user
+
+  set :rvm_ruby_version, '2.2.1p85 '
+#require 'capistrano/bundler'
+#require 'capistrano/rails'
+
+
+
 
 # Include tasks from other gems included in your Gemfile
 #
